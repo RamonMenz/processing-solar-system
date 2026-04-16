@@ -1,15 +1,17 @@
 class Moon {
-  // Each planet object keeps track of its own angle of rotation.
+  // Each moon object keeps track of its own angle of rotation.
   float theta;      // Rotation around sun
-  float diameter;   // Size of planet
-  float distance;   // Distance from sun
+  float diameter;   // Size of moon
+  float distance;   // Distance from planet
   float orbitspeed; // Orbit speed
+  int moonColor;    // Moon color
   
-  Moon(float distance_, float diameter_) {
+  Moon(float distance_, float diameter_, float orbitspeed_, int moonColor_) {
     distance = distance_;
     diameter = diameter_;
     theta = 0;
-    orbitspeed = random(-0.1,0.1);
+    orbitspeed = orbitspeed_;
+    moonColor = moonColor_;
   }
   
   void update() {
@@ -25,7 +27,7 @@ class Moon {
     // translate out distance
     translate(distance,0); 
     stroke(0);
-    fill(175);
+    fill(moonColor);
     ellipse(0,0,diameter,diameter);
     // Once the planet is drawn, the matrix is restored with popMatrix() so that the next planet is not affected.
     popMatrix(); 
